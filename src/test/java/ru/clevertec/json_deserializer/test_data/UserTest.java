@@ -1,11 +1,14 @@
 package ru.clevertec.json_deserializer.test_data;
 
+import ru.clevertec.json_deserializer.api.JsonField;
+
 import java.util.Arrays;
 import java.util.Objects;
 
 public class UserTest {
     private String name;
     private int age;
+    @JsonField(value ="is_active")
     private boolean isActive;
     private AddressTest address;
     private String [] phones;

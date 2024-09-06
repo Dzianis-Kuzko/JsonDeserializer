@@ -1,12 +1,15 @@
 package ru.clevertec.json_deserializer;
 
+import ru.clevertec.json_deserializer.api.IJsonParser;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JsonParser {
+public class JsonParser implements IJsonParser {
 
+    @Override
     public Map<String, Object> parseJsonToMap(String json) {
         json = json.trim();
         json = json.substring(1, json.length() - 1).trim();

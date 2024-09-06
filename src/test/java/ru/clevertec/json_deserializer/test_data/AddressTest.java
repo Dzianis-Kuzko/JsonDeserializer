@@ -1,10 +1,13 @@
 package ru.clevertec.json_deserializer.test_data;
 
+import ru.clevertec.json_deserializer.api.JsonField;
+
 import java.util.Objects;
 
 public class AddressTest {
     private String city;
     private String street;
+    @JsonField("house_number")
     private String houseNumber;
 
     public AddressTest() {
