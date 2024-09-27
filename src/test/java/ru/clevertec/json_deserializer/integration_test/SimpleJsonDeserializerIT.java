@@ -2,21 +2,25 @@ package ru.clevertec.json_deserializer.integration_test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.clevertec.json_deserializer.JsonDeserializer;
-import ru.clevertec.json_deserializer.JsonParser;
-import ru.clevertec.json_deserializer.api.IJsonDeserializer;
+import ru.clevertec.json_deserializer.SimpleJsonDeserializer;
+import ru.clevertec.json_deserializer.SimpleJsonParser;
+import ru.clevertec.json_deserializer.api.JsonDeserializer;
+import ru.clevertec.json_deserializer.api.JsonParser;
+import ru.clevertec.json_deserializer.field_handler.FieldHandlerRegistry;
 import ru.clevertec.json_deserializer.test_data.TestJsonFactory;
 import ru.clevertec.json_deserializer.test_data.TestUserFactory;
 import ru.clevertec.json_deserializer.test_data.UserTest;
+import ru.clevertec.json_deserializer.value_handler.ValueHandlerRegistry;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class JsonDeserializerIT {
-    private IJsonDeserializer jsonDeserializer;
+class SimpleJsonDeserializerIT {
+    private JsonDeserializer jsonDeserializer;
 
     @BeforeEach
-    void setUp() {
-        jsonDeserializer = new JsonDeserializer(new JsonParser());
+    void setUp() throws Exception {
+        JsonParser jsonParser = new SimpleJsonParser(new ValueHandlerRegistry());
+        jsonDeserializer = new SimpleJsonDeserializer(jsonParser, new FieldHandlerRegistry());
     }
 
     @Test
